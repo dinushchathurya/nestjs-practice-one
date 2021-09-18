@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Query, Param, Put, Delete, NotFoundExcepti
 import { EmployeesService } from './employees.service';
 import { EmployeeSearchDto } from './employeeSearch.dto';
 import { EmployeeUpdateDto } from './employeeUpdate.dto';
+import { EmployeeCreateDto } from './EmployeeCreate.dto';
 
 @Controller('employees')
 export class EmployeesController {
@@ -21,15 +22,8 @@ export class EmployeesController {
     }
 
     @Post()
-    createEmployee(
-        @Body('firstName') firstName:string,
-        @Body('lastName') lastName: string,
-        @Body('designation') designation: string,
-        @Body('nearestCity') nearestCity: string,
-        @Body('tier') tier,
-        @Body('status') status
-    ) {
-        return this.employeeService.createEmployee(firstName, lastName, designation, nearestCity, tier, status)
+    createEmployee(@Body() employeeCreateDto:EmployeeCreateDto) {
+        return this.employeeService.createEmployee(employeeCreateDto)
     }
 
     @Get('/:id')

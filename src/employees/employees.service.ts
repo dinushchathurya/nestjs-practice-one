@@ -3,6 +3,7 @@ import { Employee, EmployeeTier, EmployeeStatus } from './employee.model';
 import { v1 as uuid } from 'uuid';
 import { EmployeeSearchDto } from './employeeSearch.dto';
 import { EmployeeUpdateDto } from './employeeUpdate.dto';
+import { EmployeeCreateDto } from './EmployeeCreate.dto';
 
 @Injectable()
 export class EmployeesService {
@@ -13,7 +14,15 @@ export class EmployeesService {
         return this.employees;
     }
 
-    createEmployee(firstName: string, lastName: string, designation: string, nearestCity: string, tier: EmployeeTier, status: EmployeeStatus) {
+    createEmployee(employeeCreateDto: EmployeeCreateDto) {
+        
+        const {
+            firstName, 
+            lastName, 
+            designation, 
+            nearestCity, 
+            tier
+        } = employeeCreateDto
         
         const employee = {
             id: uuid(),
@@ -21,7 +30,7 @@ export class EmployeesService {
             lastName,
             designation,
             nearestCity,
-            tier: EmployeeTier.TIER_ZERO,
+            tier,
             status: EmployeeStatus.ACTIVE
         }
         this.employees.push(employee);
