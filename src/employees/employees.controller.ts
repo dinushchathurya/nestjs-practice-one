@@ -10,6 +10,6 @@ export class EmployeesController {
 
     @Get()
     getAllEmployees() {
-        this.employeeService.getAllEmployees();
+        return this.employeeService.getAllEmployees();
     }
 }
