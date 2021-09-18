@@ -42,4 +42,10 @@ export class EmployeesService {
 
         return employees;
     }
+
+    getEmployeeById(id:string): Employee{
+        const employees = this.getAllEmployees();
+        return employees.find(employee => employee.id === id)
+
+    }
 }
