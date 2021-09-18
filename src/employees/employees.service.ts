@@ -23,4 +23,5 @@ export class EmployeesService {
         }
         this.employees.push(employee);
         return employee;
+    }
 }
