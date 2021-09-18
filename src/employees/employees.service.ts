@@ -22,4 +22,5 @@ export class EmployeesService {
             tier
         }
         this.employees.push(employee);
+        return employee;
 }
