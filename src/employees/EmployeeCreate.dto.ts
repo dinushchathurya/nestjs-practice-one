@@ -1,11 +1,14 @@
 import { EmployeeTier, EmployeeStatus } from "./employee.model";
+import { IsNotEmpty, isNotEmpty } from 'class-validator';
 
-export interface EmployeeCreateDto {
-    id: string;
-    firstName: string
+export class EmployeeCreateDto {
+    id: string
+    @IsNotEmpty()
+    firstName: string;
+    @IsNotEmpty()
     lastName: string
     designation: string
     nearestCity: string
-    tier: EmployeeTier,
+    tier: EmployeeTier
     status: EmployeeStatus
 }

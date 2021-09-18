@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Query, Param, Put, Delete, NotFoundException, HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query, Param, Put, Delete, NotFoundException, HttpCode, ValidationPipe, UsePipes } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { EmployeeSearchDto } from './employeeSearch.dto';
 import { EmployeeUpdateDto } from './employeeUpdate.dto';
 import { EmployeeCreateDto } from './EmployeeCreate.dto';
+import { EmployeeTierValidationPipe } from 'src/employee-tier-validation.pipe';
 
 @Controller('employees')
 export class EmployeesController {
@@ -22,6 +23,8 @@ export class EmployeesController {
     }
 
     @Post()
+    @UsePipes(ValidationPipe)
+    @UsePipes(new EmployeeTierValidationPipe())
     createEmployee(@Body() employeeCreateDto:EmployeeCreateDto) {
         return this.employeeService.createEmployee(employeeCreateDto)
     }

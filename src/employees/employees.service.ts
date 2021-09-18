@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Employee, EmployeeTier, EmployeeStatus } from './employee.model';
 import { v1 as uuid } from 'uuid';
 import { EmployeeSearchDto } from './employeeSearch.dto';
@@ -56,7 +56,13 @@ export class EmployeesService {
     getEmployeeById(id:string): Employee{
 
         const employees = this.getAllEmployees();
-        return employees.find(employee => employee.id === id)
+        let employee = employees.find(employee => employee.id === id)
+
+        if(!employee){
+            throw new NotFoundException(`Employee with ${id} not exists`)
+        }
+
+        return employee;
     }
 
     updateEmployee(employeeUpdateDto: EmployeeUpdateDto) {
