@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Query, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query, Param, Put, Delete, NotFoundException, HttpCode } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 import { EmployeeSearchDto } from './employeeSearch.dto';
 import { EmployeeUpdateDto } from './employeeUpdate.dto';
@@ -44,8 +44,11 @@ export class EmployeesController {
     }
 
     @Delete('/:id')
+    @HttpCode(204)
     deleteEmployee(@Param('id') id: string) {
-        this.employeeService.deleteEmployee(id);
+        if(!this.employeeService.deleteEmployee(id)) {
+            throw new NotFoundException('Employee does not exists');
+        }
     }
 
 }
