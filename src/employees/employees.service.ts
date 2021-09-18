@@ -20,5 +20,6 @@ export class EmployeesService {
             designation,
             nearestCity,
             tier
-    }
+        }
+        this.employees.push(employee);
 }
