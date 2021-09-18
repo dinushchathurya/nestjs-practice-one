@@ -3,7 +3,8 @@ export interface Employee {
     lastName:string
     designation: string
     nearestCity: string
-    tier: EmployeeTier
+    tier: EmployeeTier,
+    status: EmployeeStatus
 }
 
 export enum EmployeeTier {
@@ -12,4 +13,10 @@ export enum EmployeeTier {
     TIER_THREE = 'TIER_THREE',
     TIER_FOUR = 'TIER_FOUR',
     TIER_ZERO = 'TIER_ZERO'
+}
+
+export enum EmployeeStatus {
+    ACTIVE = 'ACTIVE',
+    SUSPENDED = 'SUSPENDED',
+    RESIGNED = 'RESIGNED'
 }
