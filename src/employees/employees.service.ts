@@ -50,7 +50,7 @@ export class EmployeesService {
         return employees.find(employee => employee.id === id)
     }
 
-    updateEmployee(employeeUpdateDto: EmployeeUpdateDto): Employee {
+    updateEmployee(employeeUpdateDto: EmployeeUpdateDto) {
 
         const { id, city } = employeeUpdateDto;
 
@@ -58,5 +58,5 @@ export class EmployeesService {
         employee.nearestCity = city;
         return employee;
     }
-    
+
 }
