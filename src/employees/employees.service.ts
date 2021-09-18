@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Employee, EmployeeTier } from './employee.model';
+import { Employee, EmployeeTier, EmployeeStatus } from './employee.model';
 import { v1 as uuid } from 'uuid';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class EmployeesService {
         return this.employees;
     }
 
-    createEmployee(firstName:string, lastName:string, designation:string, nearestCity:string, tier:EmployeeTier) {
+    createEmployee(firstName: string, lastName: string, designation: string, nearestCity: string, tier: EmployeeTier, status: EmployeeStatus) {
         
         const employee = {
             id: uuid(),
@@ -19,7 +19,8 @@ export class EmployeesService {
             lastName,
             designation,
             nearestCity,
-            tier
+            tier: EmployeeTier.TIER_ZERO,
+            status: EmployeeStatus.ACTIVE
         }
         this.employees.push(employee);
         return employee;

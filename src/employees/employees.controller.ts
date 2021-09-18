@@ -19,8 +19,9 @@ export class EmployeesController {
         @Body('lastName') lastName: string,
         @Body('designation') designation: string,
         @Body('nearestCity') nearestCity: string,
-        @Body('tier') tier: number,
+        @Body('tier') tier,
+        @Body('status') status
     ) {
-        return this.employeeService.createEmployee(firstName, lastName, designation, nearestCity, tier)
+        return this.employeeService.createEmployee(firstName, lastName, designation, nearestCity, tier, status)
     }
 }
