@@ -59,4 +59,10 @@ export class EmployeesService {
         return employee;
     }
 
+    deleteEmployee(id:string){
+
+        let employees = this.getAllEmployees();
+        this.employees = employees.filter(employee => employee.id != id)
+    }
+
 }
