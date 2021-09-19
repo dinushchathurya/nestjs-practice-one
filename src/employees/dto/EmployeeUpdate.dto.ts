@@ -1,4 +1,4 @@
 export interface EmployeeUpdateDto {
-    id: string,
-    city : string
+    id: string
+    city: string
 }
